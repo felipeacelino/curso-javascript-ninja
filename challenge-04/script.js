@@ -118,7 +118,9 @@ carro.addPessoa = function(qtdePessoas) {
 
     if (vagas === 0) {
         return 'O carro já está lotado!';
-    } else if (vagas < qtdePessoas) {
+    }
+    
+    if (vagas < qtdePessoas) {
         return 'Só cabem mais ' + vagas + ' ' + txtVagas + '!';
     }
 
@@ -169,7 +171,7 @@ carro.removePessoas = function (quantidade) {
         return 'Foram removidas ' + carro.quantidadePessoas + ' ' + txtPessoas + '.';
     }
 }
-console.log(carro.removePessoas(4));	// Foram removidas 4 pessoas.
+console.log(carro.removePessoas(14));	// Foram removidas 4 pessoas.
 
 // Adicione 10 pessoas no carro.
 console.log(carro.addPessoa(10)); // Só cabem mais 4 pessoas!
