@@ -1,4 +1,4 @@
-(function() {
+(function(win, doc) {
   'use strict';
 
   /*
@@ -36,4 +36,129 @@
   que será nomeado de "app".
   */
 
-})();
+  function app() {
+    return {
+      init: function() {
+        
+      }
+    }
+  }
+
+  app().init();
+
+  var compayName;
+  var compayPhone;
+
+  var cars = [];
+
+  var $companyInfo = new DOM('[data-js="company"]');
+  var $form = new DOM('[data-js="form-cad"]');
+  var $tableList = new DOM('[data-js="cars-list"]');
+
+  $form.on('submit', handleFormCad);
+
+  function setCompanyInfo(data) {
+    if (!data) {
+      data = {
+        name: "Empresa não dentificada",
+        phone: "(00) 0000-00000"
+      };
+    }
+    compayName = data.name;
+    compayPhone = data.phone;
+    $companyInfo.text(compayName + ' - ' + compayPhone);
+  }
+
+  function isAjaxRespondeOk(ajax) {
+    return ajax.readyState === 4 && ajax.status === 200;
+  }
+
+  function init() {
+    var ajax = new XMLHttpRequest();
+    ajax.open('GET', 'company.json');
+    ajax.send();
+
+    ajax.addEventListener('readystatechange', () => {
+      if (isAjaxRespondeOk(ajax)) {
+        try {
+          var data = JSON.parse(ajax.responseText);
+          setCompanyInfo(data);
+        } catch(e) {
+          setCompanyInfo();
+        }
+      }
+    }, false);
+  }
+
+  function Car(image, model, year, board, color) {
+    this.image = image;
+    this.model = model;
+    this.year = year;
+    this.board = board;
+    this.color = color;
+  }
+
+  function handleFormCad(ev) {
+    ev.preventDefault();
+
+    var $image = new DOM('[data-js="image"]');
+    var $model = new DOM('[data-js="model"]');
+    var $year = new DOM('[data-js="year"]');
+    var $board = new DOM('[data-js="board"]');
+    var $color = new DOM('[data-js="color"]');
+
+    var car = {
+      "image": $image.val(),
+      "model": $model.val(),
+      "year": $year.val(),
+      "board": $board.val(),
+      "color": $color.val()
+    }
+
+    cars.push(car);
+
+    resetForm();
+
+    populateCars();
+  }
+
+  function resetForm() {
+    var $inputs = new DOM('input[data-js]');
+    $inputs.val('');
+  }
+
+  function populateCars() {
+
+    cars.forEach((car) => {
+      var $tr = doc.createElement('tr');
+
+      var $tdImage = doc.createElement('td');
+      var $image = doc.createElement('img');
+      $image.src = car.image;
+      $tdImage.appendChild($image);
+      $tr.appendChild($tdImage);
+
+      var $tdModel = doc.createElement('td');
+      $tdModel.textContent = car.model;
+      $tr.appendChild($tdModel);
+
+      var $tdYear = doc.createElement('td');
+      $tdYear.textContent = car.year;
+      $tr.appendChild($tdYear);
+
+      var $tdBoard = doc.createElement('td');
+      $tdBoard.textContent = car.board;
+      $tr.appendChild($tdBoard);
+
+      var $tdColor = doc.createElement('td');
+      $tdColor.textContent = car.color;
+      $tr.appendChild($tdColor);
+
+      $tableList.get()[0].appendChild($tr);
+
+    });
+  }
+
+  init();
+
+})(window, document);

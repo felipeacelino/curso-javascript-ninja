@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Challenge 29</title>
+</head>
+<body>
+
+    <h1 data-js="company"></h1>
+
+    <h2>Cadastro de automóveis</h2>
+
+    <fieldset>
+        <legend>CADASTRAR AUTOMÓVEL</legend>
+        
+        <form data-js="form-cad">
+
+            <p>
+                <label>
+                    Imagem (URL)
+                    <input type="url" data-js="image"/>
+                </label>
+            </p>
+
+            <p>
+                <label>
+                    Marca / Modelo
+                    <input type="text" data-js="model"/>
+                </label>
+            </p>
+
+            <p>
+                <label>
+                    Ano
+                    <input type="number" data-js="year"/>
+                </label>
+            </p>
+
+            <p>
+                <label>
+                    Placa
+                    <input type="text" data-js="board"/>
+                </label>
+            </p>
+
+            <p>
+                <label>
+                    Cor
+                    <input type="text" data-js="color"/>
+                </label>
+            </p>
+
+            <p>
+                <button type="submit" data-js="btn-submit">Cadastrar</button>
+            </p>
+
+        </form>
+
+    </fieldset>
+
+    <br>
+
+    <fieldset>
+        <legend>AUTOMÓVEIS CADASTRADOS</legend>
+        
+        <table border="1" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th>Imagem</th>
+                    <th>Marca / Modelo</th>
+                    <th>Ano</th>
+                    <th>Placa</th>
+                    <th>Cor</th>
+                </tr>
+            </thead>
+            <tbody data-js="cars-list"></tbody>
+        </table>
+
+    </fieldset>
+
+  <script src="dom.js"></script>
+  <script src="challenge-29.js"></script>
+</body>
+</html>
