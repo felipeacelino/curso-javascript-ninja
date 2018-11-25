@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>FDX Autos - JS Ninja</title>
+    
+    <!-- css -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar sticky-top navbar-dark bg-dark">
+        <div class="container">
+            <span class="navbar-brand mb-0 h1" data-js="company-name"></span>
+            <span class="navbar-text" data-js="company-phone"></span>
+        </div>
+    </nav>
+
+    <div class="main p-3">
+        
+        <div class="container">
+            
+            <div class="row">
+                
+                <!-- form -->
+                <div class="col-lg mr-0 mr-lg-3 mb-3 mb-lg-0 border py-3">
+                    <h4 class="mb-4">Cadastrar Automóvel</h4>
+
+                    <form data-js="form">
+                        <div class="form-group">
+                            <label for="image">Imagem (URL)</label>
+                            <input type="url" class="form-control" id="image" placeholder="Informe a url da imagem" data-js="image" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="model">Marca/Modelo</label>
+                            <input type="text" class="form-control" id="model" placeholder="Informe a marca ou modelo" data-js="model" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="year">Ano</label>
+                            <input type="number" class="form-control" id="year" placeholder="Informe o ano" data-js="year" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="plate">Placa</label>
+                            <input type="text" class="form-control" id="plate" placeholder="Informe a placa" data-js="plate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="color">Cor</label>
+                            <input type="text" class="form-control" id="color" placeholder="Informe a cor" data-js="color" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Cadastrar</button>
+                        <button type="reset" class="btn btn-light">Limpar</button>
+                    </form>
+                </div>
+                <!-- //form -->
+                
+                <!-- table -->
+                <div class="col-lg border py-3">
+                    <h4 class="mb-4">Automóveis Cadastrados</h4>
+
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">Imagem</th>
+                                    <th scope="col">Marca/Modelo</th>
+                                    <th scope="col">Ano</th>
+                                    <th scope="col">Placa</th>
+                                    <th scope="col">Cor</th>
+                                </tr>
+                            </thead>
+                            <tbody data-js="table-list"></tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- //table -->
+            </div>
+        </div>
+    </div>
+    
+    <!-- scripts -->
+    <script src="js/dom.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
